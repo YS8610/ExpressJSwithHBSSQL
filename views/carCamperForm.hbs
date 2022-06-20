@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/camperbot.css">
+  <title>Car Camper</title>
+</head>
+<body>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Current Setting</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tr>
+      <td>AcctId</td>
+      <td><strong>{{acct}}</strong></td>
+    </tr>
+    <tr>
+      <td>ChatId</td>
+      <td><strong>{{chatid}}</strong></td>
+    </tr>
+    <tr>
+      <td>Current StartDate</td>
+      <td> {{curSDate}}</td>
+    </tr>
+    <tr>
+      <td>Current EndDate</td>
+      <td>{{curEDate}}</td>
+    </tr>
+    <tr>
+      <td>Current Day Filter</td>
+      <td>{{curDayFilter}}</td>
+    </tr>
+    <tr>
+      <td>Current WeekDay Filter</td>
+      <td>{{curWeekDayFilter}} </td>
+    </tr>
+    <tr>
+      <td>Current WeekEnd Filter</td>
+      <td>{{curWeekEndFilter}}</td>
+    </tr>
+  </table>
+  <h3>Pls change Setting below</h3>
+  <form action="/camperbot" method="post">
+    <input type="hidden" id="cdcId" name="cdcId" value={{acct}}> 
+    <input type="hidden" id="chatId" name="chatId" value={{chatid}}> 
+    <label for="lesson">Lesson: {{class}}</label> 
+    <br/>
+    <label for="startDate" >Startdate: </label>
+    <input type="date" id="startDate" name="startDate" min={{todayDate}} value ={{todayDate}} required>
+    <label for="endDate">  Enddate: </label>
+    <input type="date" id="endDate" name="endDate" min={{todayDate}} required>
+    <br/>
+    <h3>Day Filter</h3>
+        <table>
+      <tr>
+        <td>    
+          <input type="checkbox" id="d1" name="d1" value="d1"  checked>
+          <label for="d1">Mon</label><br></td>
+        <td>
+          <input type="checkbox" id="d2" name="d2" value="d2"  checked>
+          <label for="d2">Tue</label><br>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="checkbox" id="d3" name="d3" value="d3"  checked>
+          <label for="d3">Wed</label><br>
+        </td>
+        <td>
+          <input type="checkbox" id="d4" name="d4" value="d4"  checked>
+          <label for="d4">Thur</label><br>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="checkbox" id="d5" name="d5" value="d5" checked>
+          <label for="d5">Fri</label><br>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <input type="checkbox" id="d6" name="d6" value="d6" checked>
+          <label for="d6">Sat</label><br>
+        </td>
+        <td>
+          <input type="checkbox" id="d7" name="d7" value="d7" checked>
+          <label for="d7">Sun</label><br>
+        </td>
+      </tr>
+    </table>
+    <h3>Weekday Filter (Monday - Friday)</h3>
+    <table>
+      <tr>
+        <td>
+          <input type="checkbox" id="WDs1" name="WDs1" value="WDs1" checked>
+          <label for="WDs1">Session 1 (8:30am – 10:10am)</label><br></td>
+        <td>
+          <input type="checkbox" id="WDs2" name="WDs2" value="WDs2" checked>
+          <label for="WDs2">Session 2 (10:20am – 12:00pm)</label><br>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="checkbox" id="WDs3" name="WDs3" value="WDs3" checked>
+          <label for="WDs3">Session 3 (12:45pm – 2:25pm)</label><br>
+        </td>
+        <td>
+          <input type="checkbox" id="WDs4" name="WDs4" value="WDs4" checked>
+          <label for="WDs4">Session 4 (2:35pm – 4:15pm)</label><br>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="checkbox" id="WDs5" name="WDs5" value="WDs5" checked>
+          <label for="WDs5">Session 5 (4:25pm – 6:05pm)</label><br>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="checkbox" id="WDs6" name="WDs6" value="WDs6" checked>
+          <label for="WDs6">Session 6 (6:50pm – 8:30pm)</label><br>
+        </td>
+        <td>
+          <input type="checkbox" id="WDs7" name="WDs7" value="WDs7" checked>
+          <label for="WDs7">Session 7 (8:40pm – 10:20pm)</label><br>
+        </td>
+      </tr>
+    </table>
+    <h3>WeekEnd Filter (Saturday and Sunday)</h3>
+    <table>
+      <tr>
+        <td>
+          <input type="checkbox" id="WEs1" name="WEs1" value="WEs1" checked>
+          <label for="WEs1">Session 1 (8:30am – 10:10am)</label><br></td>
+        <td>
+          <input type="checkbox" id="WEs2" name="WEs2" value="WEs2" checked>
+          <label for="WEs2">Session 2 (10:20am – 12:00pm)</label><br>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="checkbox" id="WEs3" name="WEs3" value="WEs3" checked>
+          <label for="WEs3">Session 3 (12:45pm – 2:25pm)</label><br>
+        </td>
+        <td>
+          <input type="checkbox" id="WEs4" name="WEs4" value="WEs4" checked>
+          <label for="WEs4">Session 4 (2:35pm – 4:15pm)</label><br>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="checkbox" id="WEs5" name="WEs5" value="WEs5" checked>
+          <label for="WEs5">Session 5 (4:25pm – 6:05pm)</label><br>
+        </td>
+      </tr>
+    </table>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
